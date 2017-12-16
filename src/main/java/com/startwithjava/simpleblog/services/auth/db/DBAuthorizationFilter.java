@@ -1,7 +1,6 @@
 package com.startwithjava.simpleblog.services.auth.db;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,11 +15,9 @@ import org.springframework.security.web.util.matcher.RequestMatcher;
 public class DBAuthorizationFilter extends AbstractAuthenticationProcessingFilter {
     public static final String USERNAME = "username";
     public static final String PASSWORD = "password";
-    @Autowired
     private DaoAuthenticationProvider authenticationManager;
 	protected DBAuthorizationFilter(RequestMatcher requiresAuthenticationRequestMatcher) {
 		super(requiresAuthenticationRequestMatcher);
-		// TODO Auto-generated constructor stub
 	}
 	public DBAuthorizationFilter() {
 		// TODO Auto-generated constructor stub
@@ -34,7 +31,8 @@ public class DBAuthorizationFilter extends AbstractAuthenticationProcessingFilte
        String password = getPassword(request);
  
        Authentication authentication = new UsernamePasswordAuthenticationToken(username, password);
-       return this.authenticationManager.authenticate(authentication);
+       authenticationManager = new DaoAuthenticationProvider();
+       return authenticationManager.authenticate(authentication);
 	}
     public String getUsername(HttpServletRequest request){
         return request.getParameter(USERNAME);

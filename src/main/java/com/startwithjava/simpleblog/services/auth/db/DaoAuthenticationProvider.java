@@ -6,9 +6,12 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
 import com.startwithjava.simpleblog.entities.User;
 import com.startwithjava.simpleblog.repositories.UserRepository;
 
+@Service
 public class DaoAuthenticationProvider implements AuthenticationProvider{
 	@Autowired
 	UserRepository userRepository;
