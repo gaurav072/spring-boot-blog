@@ -22,4 +22,8 @@ public class HomeController {
 	public String login() {
 		return "home";
 	}
+	@RequestMapping(value="/403",method=RequestMethod.GET)
+	public String accessDenied() {
+		return "403";
+	}
 }

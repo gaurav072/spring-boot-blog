@@ -1,28 +1,20 @@
 package com.startwithjava.simpleblog.entities;
+
 import java.util.Date;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="login_history")
-public class LoginHistory {
-	@Id
-	private int id;
+public class LoginHistory extends AbstractEntity{
 	private String message;
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
 	private Date createdDateTime;
 	private short status;
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	public String getMessage() {
 		return message;
 	}

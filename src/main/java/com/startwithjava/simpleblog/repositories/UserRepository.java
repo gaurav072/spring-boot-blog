@@ -7,5 +7,5 @@ import com.startwithjava.simpleblog.entities.User;
 public interface UserRepository extends Repository<User, Long> {
 	public User findUserByUsernameAndPassword(String username,String password);
 	public List<User> findUserByRoles(String username,String password);
-	public User findUserByEmail(String email);
+	public User findUserByEmailAndPassword(String email,String password);
 }

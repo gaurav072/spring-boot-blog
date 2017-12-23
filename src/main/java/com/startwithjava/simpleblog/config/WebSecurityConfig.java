@@ -1,4 +1,5 @@
 package com.startwithjava.simpleblog.config;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -15,19 +16,25 @@ import com.startwithjava.simpleblog.services.auth.otp.OTPAuthorizationFilter;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+	@Autowired
+	private LDAPAuthenticationProvider ldapAuthenticationProvider;
+	@Autowired
+	private OTPAuthenticationProvider otpAuthenticationProvider;
+	@Autowired
+	private DaoAuthenticationProvider daoAuthenticationProvider;
+	@Autowired
+	private DBAuthorizationFilter dbAuthorizationFilter;
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+    	//configure filters
+        //http.addFilterBefore( ldapAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
+        //http.addFilterBefore( otpAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
+    	http.authenticationProvider(daoAuthenticationProvider);
+    	http.addFilterBefore( dbAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
     	
-    	  // configure filters
-        http.addFilterBefore( new LDAPAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
-        http.addFilterBefore( new OTPAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
-        http.addFilterBefore( new DBAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
-
-        // configure authentication providers
-        http.authenticationProvider( new LDAPAuthenticationProvider());
-        http.authenticationProvider( new OTPAuthenticationProvider());
-        http.authenticationProvider( new DaoAuthenticationProvider());
-        
+        //configure authentication providers
+        //http.authenticationProvider(ldapAuthenticationProvider);
+        //http.authenticationProvider(otpAuthenticationProvider);
         http
             .authorizeRequests()
                 .antMatchers("/", "/home","/web-jars/*").permitAll()
@@ -38,7 +45,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
             .logout()
-                .permitAll();
+            .and()
+    		.exceptionHandling().accessDeniedPage("/403");
         http.csrf().disable();
+        
     }
    }

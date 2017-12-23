@@ -1,29 +1,20 @@
 package com.startwithjava.simpleblog.entities;
-
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Post {
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+public class Post extends AbstractEntity{
 	private String title;
 	private String content;
 	private String slug;
+	private String postType;
 	@ManyToOne
 	@JoinColumn(name="author_id")
 	private User author;
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+	@ManyToOne
+	@JoinColumn(name="status")
+	private StatusMaster status;
 	public String getTitle() {
 		return title;
 	}
@@ -48,5 +39,16 @@ public class Post {
 	public void setAuthor(User author) {
 		this.author = author;
 	}
-	
+	public String getPostType() {
+		return postType;
+	}
+	public void setPostType(String postType) {
+		this.postType = postType;
+	}
+	public StatusMaster getStatus() {
+		return status;
+	}
+	public void setStatus(StatusMaster status) {
+		this.status = status;
+	}
 }

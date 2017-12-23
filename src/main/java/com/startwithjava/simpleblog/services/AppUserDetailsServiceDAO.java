@@ -20,11 +20,13 @@ public class AppUserDetailsServiceDAO implements UserDetailsService {
 			throws UsernameNotFoundException {		
 		logger.info("loadUserByUsername username="+username);
 		
-		User user = userRepository.findUserByEmail(username);
+		User user=null;
+		//User user = userRepository.findUserByEmail(username);
 		
-		if(user!=null){
+		/*if(user!=null){
 			throw new UsernameNotFoundException(username + " not found");
 		}
+		*/
 		return new SecurityUser(user);
 	 }
 }

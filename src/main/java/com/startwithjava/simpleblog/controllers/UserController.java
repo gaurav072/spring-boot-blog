@@ -1,4 +1,4 @@
-package com.startwithjava.simpleblog;
+package com.startwithjava.simpleblog.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
