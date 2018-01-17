@@ -20,7 +20,7 @@ public class HomeController {
 	}
 	@RequestMapping(value="/",method=RequestMethod.GET)
 	public String login() {
-		return "home";
+		return "frontend/home";
 	}
 	@RequestMapping(value="/403",method=RequestMethod.GET)
 	public String accessDenied() {

@@ -5,10 +5,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class UserController {
-	@GetMapping
+	@GetMapping("/login")
 	public ModelAndView login() {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("login");
+		mav.setViewName("frontend/login");
 		return mav;
 	}
 }

@@ -3,7 +3,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.startwithjava.simpleblog.entities.User;
 import com.startwithjava.simpleblog.repositories.UserRepository;
-
 /**
  * For Authentication & Authorization
  * @author Gaurav
