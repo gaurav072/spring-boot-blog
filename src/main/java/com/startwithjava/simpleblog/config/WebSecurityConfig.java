@@ -1,6 +1,7 @@
 package com.startwithjava.simpleblog.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -9,9 +10,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.startwithjava.simpleblog.services.auth.db.DBAuthorizationFilter;
 import com.startwithjava.simpleblog.services.auth.db.DaoAuthenticationProvider;
 import com.startwithjava.simpleblog.services.auth.ldap.LDAPAuthenticationProvider;
-import com.startwithjava.simpleblog.services.auth.ldap.LDAPAuthorizationFilter;
 import com.startwithjava.simpleblog.services.auth.otp.OTPAuthenticationProvider;
-import com.startwithjava.simpleblog.services.auth.otp.OTPAuthorizationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -29,8 +28,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     	//configure filters
         //http.addFilterBefore( ldapAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
         //http.addFilterBefore( otpAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
-    	http.authenticationProvider(daoAuthenticationProvider);
-    	http.addFilterBefore( dbAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
+    //	http.authenticationProvider(daoAuthenticationProvider);
+    	//http.addFilterBefore( dbAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
     	
         //configure authentication providers
         //http.authenticationProvider(ldapAuthenticationProvider);
@@ -50,4 +49,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         
     }
+    @Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.authenticationProvider(daoAuthenticationProvider);
+	}
    }
