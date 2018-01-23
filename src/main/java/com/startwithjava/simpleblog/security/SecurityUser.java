@@ -1,4 +1,4 @@
-package com.startwithjava.simpleblog.config;
+package com.startwithjava.simpleblog.security;
 
 import java.util.ArrayList;
 import java.util.Collection;

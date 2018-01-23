@@ -8,7 +8,13 @@ public class UserController {
 	@GetMapping("/login")
 	public ModelAndView login() {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("frontend/login");
+		mav.setViewName("login");
+		return mav;
+	}
+	@GetMapping("/dashboard")
+	public ModelAndView dashboard() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("dashboard");
 		return mav;
 	}
 }

@@ -1,4 +1,4 @@
-package com.startwithjava.simpleblog.services.auth.ldap;
+/*package com.startwithjava.simpleblog.services.auth.ldap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,12 +20,12 @@ public class LDAPAuthorizationFilter extends AbstractAuthenticationProcessingFil
     public Authentication attemptAuthentication( HttpServletRequest request, HttpServletResponse response ) throws AuthenticationException
     {
 
-       /* if ( request.getHeader( "Authorization" ) == null ) {
+        if ( request.getHeader( "Authorization" ) == null ) {
             return null; // no header found, continue on to other security filters
-        }*/
+        }
 
         // return a new authentication token to be processed by the authentication provider
        // return new LDAPAuthorizationToken( request.getHeader( "Authorization" ) );
     	return null;
     }
-}
+}*/

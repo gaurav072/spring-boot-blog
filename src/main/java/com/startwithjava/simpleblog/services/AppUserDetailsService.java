@@ -6,27 +6,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
-import com.startwithjava.simpleblog.config.SecurityUser;
 import com.startwithjava.simpleblog.entities.User;
 import com.startwithjava.simpleblog.repositories.UserRepository;
+import com.startwithjava.simpleblog.security.SecurityUser;
 
-public class AppUserDetailsServiceDAO implements UserDetailsService {
+@Service
+public class AppUserDetailsService implements UserDetailsService {
 	protected final Log logger = LogFactory.getLog(getClass());
 	@Autowired
 	UserRepository userRepository;
 	@Override
-	public UserDetails loadUserByUsername(final String username)
+	public UserDetails loadUserByUsername(final String email)
 			throws UsernameNotFoundException {		
-		logger.info("loadUserByUsername username="+username);
+		logger.info("loadUserByUsername username="+email);
 		
-		User user=null;
-		//User user = userRepository.findUserByEmail(username);
+		User user = userRepository.findUserByEmail(email);
 		
-		/*if(user!=null){
-			throw new UsernameNotFoundException(username + " not found");
+		if(user==null){
+			throw new UsernameNotFoundException(email + " not found");
 		}
-		*/
+		
 		return new SecurityUser(user);
 	 }
 }

@@ -1,7 +1,9 @@
 package com.startwithjava.simpleblog.entities;
 import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 @Entity
 public class User extends AbstractEntity{
@@ -9,7 +11,7 @@ public class User extends AbstractEntity{
 	private String username;
 	private String password;
 	private String name;
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
 	private List<RoleMaster> roles;
 	private short status;
 	public String getUsername() {
