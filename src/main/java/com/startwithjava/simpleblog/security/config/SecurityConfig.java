@@ -1,4 +1,6 @@
-/*package com.startwithjava.simpleblog.security.config;
+/*
+
+package com.startwithjava.simpleblog.security.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;

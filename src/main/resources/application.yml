@@ -24,7 +24,7 @@ spring:
     platform: mysql
     url: jdbc:mysql://localhost:3306/springblog?autoReconnect=true&useSSL=false
     username: root
-    password: sfx1ess
+    password:
     driverClassName: com.mysql.jdbc.Driver
 
 logging:

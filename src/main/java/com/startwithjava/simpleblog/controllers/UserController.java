@@ -11,10 +11,10 @@ public class UserController {
 		mav.setViewName("login");
 		return mav;
 	}
-	@GetMapping("/dashboard")
-	public ModelAndView dashboard() {
+	@GetMapping("/loginAdmin")
+	public ModelAndView adminLogin(){
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("dashboard");
+		mav.setViewName("admin/login");
 		return mav;
 	}
 }

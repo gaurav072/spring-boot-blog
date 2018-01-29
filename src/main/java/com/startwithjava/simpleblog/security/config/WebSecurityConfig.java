@@ -1,4 +1,5 @@
-package com.startwithjava.simpleblog.security.config;
+
+/*package com.startwithjava.simpleblog.security.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -10,10 +11,9 @@ import com.startwithjava.simpleblog.services.AppUserDetailsService;
 
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
 	@Autowired
 	AppUserDetailsService appUserDetailsService;
-	
+
 	@Autowired
 	AuthSuccessHandler authSuccessHandler;
 	
@@ -23,6 +23,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
             .antMatchers(
                     "/",
+                    "/vendor/**",
+                    "/dist/**",
+					"/data/**",
                     "/js/**",
                     "/css/**",
                     "/img/**",
@@ -38,7 +41,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
     		.exceptionHandling().accessDeniedPage("/403");
         http.csrf().disable();
-        
     }
     @Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -46,4 +48,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     	daoAuthenticationProvider.setUserDetailsService(appUserDetailsService);
 		auth.authenticationProvider(daoAuthenticationProvider);
 	}
-   }
+   }*/

@@ -13,4 +13,8 @@ public class PostController {
 		mav.setViewName("posts/list");
 		return null;
 	}*/
+    @RequestMapping("/posts")
+    public String index(){
+      return null;
+    }
 }

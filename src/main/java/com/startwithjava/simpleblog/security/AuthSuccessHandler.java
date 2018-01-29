@@ -61,9 +61,9 @@ public class AuthSuccessHandler implements AuthenticationSuccessHandler {
         }
  
         if (isUser) {
-            return "/dashboard";
+            return "/account";
         } else if (isAdmin) {
-            return "/dashboard";
+            return "/admin/dashboard";
         } else {
             throw new IllegalStateException();
         }
