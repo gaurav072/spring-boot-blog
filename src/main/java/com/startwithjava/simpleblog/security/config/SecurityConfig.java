@@ -1,21 +1,24 @@
-/*
-
 package com.startwithjava.simpleblog.security.config;
 
+import com.startwithjava.simpleblog.security.AuthSuccessHandler;
+import com.startwithjava.simpleblog.security.LoggingAccessDeniedHandler;
+import com.startwithjava.simpleblog.services.AppUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import com.startwithjava.simpleblog.security.LoggingAccessDeniedHandler;
-
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
     @Autowired
     private LoggingAccessDeniedHandler accessDeniedHandler;
+    @Autowired
+    AuthSuccessHandler authSuccessHandler;
+    @Autowired
+    AppUserDetailsService appUserDetailsService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -27,11 +30,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                             "/css/**",
                             "/img/**",
                             "/webjars/**").permitAll()
-                   // .antMatchers("/user/**").hasRole("USER")
+                    .antMatchers("/user/**").hasRole("USER")
+                    .antMatchers("/admin/**").hasRole("ADMIN")
                     .anyRequest().authenticated()
                 .and()
                 .formLogin()
                     .loginPage("/login")
+                    .successHandler(authSuccessHandler)
                     .permitAll()
                 .and()
                 .logout()
@@ -42,15 +47,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .permitAll()
                 .and()
                 .exceptionHandling()
-                    .accessDeniedHandler(accessDeniedHandler);
+                .accessDeniedHandler(accessDeniedHandler);
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("user").password("password").roles("USER")
+       /* auth.inMemoryAuthentication()
+                .withUser("1").password("1").roles("USER")
             .and()
-                .withUser("manager").password("password").roles("MANAGER");
+                .withUser("2").password("2").roles("ADMIN");*/
+        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+        daoAuthenticationProvider.setUserDetailsService(appUserDetailsService);
+        auth.authenticationProvider(daoAuthenticationProvider);
     }
 
-}*/
+}

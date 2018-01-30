@@ -1,19 +1,21 @@
 package com.startwithjava.simpleblog.entities;
 
 import java.time.LocalDateTime;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import java.util.Date;
+import javax.persistence.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+
+import static javax.persistence.TemporalType.TIMESTAMP;
 
 @MappedSuperclass
 public abstract class AbstractEntity {
 	 @Id @GeneratedValue(strategy=GenerationType.AUTO) 
 	 protected Integer Id;
-	 @CreatedDate LocalDateTime createdDate;
-	 @LastModifiedDate LocalDateTime lastModifiedDate;
+	 @CreatedDate
+     LocalDateTime createdDate;
+	 @LastModifiedDate
+     LocalDateTime lastModifiedDate;
 	public Integer getId() {
 		return Id;
 	}

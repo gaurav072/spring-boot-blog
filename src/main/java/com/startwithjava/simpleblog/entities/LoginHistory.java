@@ -8,12 +8,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="login_history")
-public class LoginHistory extends AbstractEntity{
+public class LoginHistory extends AbstractEntity {
 	private String message;
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
-	private Date createdDateTime;
 	private short status;
 	public String getMessage() {
 		return message;
@@ -26,12 +25,6 @@ public class LoginHistory extends AbstractEntity{
 	}
 	public void setUser(User user) {
 		this.user = user;
-	}
-	public Date getCreatedDateTime() {
-		return createdDateTime;
-	}
-	public void setCreatedDateTime(Date createdDateTime) {
-		this.createdDateTime = createdDateTime;
 	}
 	public short getStatus() {
 		return status;

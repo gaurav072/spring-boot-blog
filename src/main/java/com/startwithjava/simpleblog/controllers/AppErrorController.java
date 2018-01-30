@@ -39,7 +39,7 @@ public class AppErrorController implements ErrorController
     public ModelAndView errorHtml(HttpServletRequest request) {
         Map<String,Object> map = getErrorAttributes(request, false);
         System.out.println(map);
-        return new ModelAndView("/errors/error", getErrorAttributes(request, false));
+        return new ModelAndView("/error/error", getErrorAttributes(request, false));
     }
 
     /**

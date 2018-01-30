@@ -1,3 +1,4 @@
+/*
 package com.startwithjava.simpleblog.security.config;
 import com.startwithjava.simpleblog.security.AuthSuccessHandler;
 import com.startwithjava.simpleblog.services.AppUserDetailsService;
@@ -11,7 +12,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 @EnableWebSecurity
 public class MultiHttpSecurityConfig {
-    @Order(1)
     @Configuration
     public static class AdminWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
         @Autowired
@@ -21,6 +21,7 @@ public class MultiHttpSecurityConfig {
             http
                     .authorizeRequests()
                     .antMatchers(
+                            "/",
                             "/vendor/**",
                             "/dist/**",
                             "/data/**",
@@ -29,10 +30,11 @@ public class MultiHttpSecurityConfig {
                             "/img/**",
                             "/webjars/**").permitAll()
                     .antMatchers("/admin/**").hasRole("ADMIN")
+                    .antMatchers("/user/**").hasRole("USER")
                     .anyRequest().authenticated()
                     .and()
                     .formLogin()
-                    .loginPage("/loginAdmin")
+                    .loginPage("/login")
                     .successHandler(authSuccessHandler)
                     .permitAll()
                     .and()
@@ -42,7 +44,8 @@ public class MultiHttpSecurityConfig {
             http.csrf().disable();
         }
     }
-    @Configuration
+   */
+/* @Configuration
     public static class FrontendWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
         @Autowired
         AppUserDetailsService appUserDetailsService;
@@ -52,6 +55,7 @@ public class MultiHttpSecurityConfig {
         @Override
         protected void configure(HttpSecurity http) throws Exception {
             http
+                    .antMatcher("/user/**")
                     .authorizeRequests()
                     .antMatchers(
                             "/",
@@ -80,5 +84,7 @@ public class MultiHttpSecurityConfig {
             daoAuthenticationProvider.setUserDetailsService(appUserDetailsService);
             auth.authenticationProvider(daoAuthenticationProvider);
         }
-    }
+    }*//*
+
 }
+*/

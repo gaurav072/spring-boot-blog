@@ -1,7 +1,10 @@
 package com.startwithjava.simpleblog.entities;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import org.hibernate.annotations.MetaValue;
+
+import javax.persistence.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Entity
 public class Post extends AbstractEntity{
@@ -9,6 +12,12 @@ public class Post extends AbstractEntity{
 	private String content;
 	private String slug;
 	private String postType;
+
+	@ElementCollection (fetch=FetchType.EAGER)
+	@CollectionTable(name="post_meta" , joinColumns=@JoinColumn(name="ID"))
+	@Column(name = "meta_value",nullable = true)
+	public Map<String, String> postMetas = new HashMap<>();
+
 	@ManyToOne
 	@JoinColumn(name="author_id")
 	private User author;

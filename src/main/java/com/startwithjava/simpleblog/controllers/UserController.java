@@ -11,10 +11,14 @@ public class UserController {
 		mav.setViewName("login");
 		return mav;
 	}
-	@GetMapping("/loginAdmin")
-	public ModelAndView adminLogin(){
+	@GetMapping("/user")
+	public ModelAndView getUser(){
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("admin/login");
+		mav.setViewName("detail");
 		return mav;
+	}
+	@GetMapping("/access-denied")
+	public String accessDenied() {
+		return "/error/access-denied";
 	}
 }
