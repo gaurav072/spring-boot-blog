@@ -1,9 +1,8 @@
 package com.startwithjava.simpleblog.repositories;
-
-import com.startwithjava.simpleblog.entities.Post;
+import com.startwithjava.simpleblog.entities.City;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class PostDao extends JpaDao<Post,Long>{
+public class CityDao extends JpaDao<City, Long> {
 
 }

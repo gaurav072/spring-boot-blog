@@ -6,15 +6,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class PostController {
-
-/*	@RequestMapping
-	public ModelAndView list() {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("posts/list");
-		return null;
-	}*/
     @RequestMapping("/posts")
-    public String index(){
-      return null;
+    public String index()
+    {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("posts/list");
+        return null;
     }
 }
