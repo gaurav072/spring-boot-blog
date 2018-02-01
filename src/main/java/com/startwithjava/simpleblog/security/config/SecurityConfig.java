@@ -52,10 +52,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-       /* auth.inMemoryAuthentication()
-                .withUser("1").password("1").roles("USER")
-            .and()
-                .withUser("2").password("2").roles("ADMIN");*/
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
         daoAuthenticationProvider.setUserDetailsService(appUserDetailsService);
         auth.authenticationProvider(daoAuthenticationProvider);
