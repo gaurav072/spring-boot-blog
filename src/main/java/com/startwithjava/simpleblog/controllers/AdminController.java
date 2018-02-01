@@ -14,5 +14,4 @@ public class AdminController {
         mav.setViewName("admin/dashboard");
         return mav;
     }
-
 }

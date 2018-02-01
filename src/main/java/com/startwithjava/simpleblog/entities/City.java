@@ -34,4 +34,9 @@ public class City implements Serializable {
     public String getState() {
         return this.state;
     }
+
+    @Override
+    public String toString() {
+        return id+"\t"+name+"\t"+country;
+    }
 }

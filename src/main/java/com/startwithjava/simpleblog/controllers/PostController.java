@@ -20,7 +20,7 @@ public class PostController {
     public ModelAndView add()
     {
         ModelAndView mav = new ModelAndView();
-        mav.setViewName("pages/add");
+        mav.setViewName("admin/pages/add");
         return mav;
     }
 }

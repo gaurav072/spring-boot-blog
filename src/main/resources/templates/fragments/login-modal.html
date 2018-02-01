@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<body>
+<th:block th:fragment="login-modal">
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Sign In</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form th:action="@{/login}" method="post">
+                    <div class="form-group">
+                        <label for="Email" class="form-control-label">Email</label>
+                        <input name="username" type="email" class="form-control"  id="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="Password" class="form-control-label">Password</label>
+                        <input id="password"
+                               name="password" type="password" class="form-control">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" data-dismiss="modal">Sign In</button>
+            </div>
+        </div>
+    </div>
+</div>
+</th:block>
+</body>
+</html>
