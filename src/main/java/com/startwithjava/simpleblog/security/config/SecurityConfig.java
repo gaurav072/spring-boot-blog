@@ -1,5 +1,4 @@
 package com.startwithjava.simpleblog.security.config;
-
 import com.startwithjava.simpleblog.security.AuthSuccessHandler;
 import com.startwithjava.simpleblog.security.LoggingAccessDeniedHandler;
 import com.startwithjava.simpleblog.services.AppUserDetailsService;
