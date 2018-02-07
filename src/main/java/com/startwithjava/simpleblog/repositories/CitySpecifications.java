@@ -1,6 +1,4 @@
 package com.startwithjava.simpleblog.repositories;
-
-
 import com.startwithjava.simpleblog.entities.City;
 import org.springframework.data.jpa.domain.Specification;
 
