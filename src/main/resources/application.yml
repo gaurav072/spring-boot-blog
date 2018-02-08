@@ -1,60 +1,60 @@
-server:
-  port: 8080
-
-spring:
-   profiles:default,dev
-  thymeleaf:
-    cache: false
-    check-template: true
-    check-template-location: true
-    content-type: text/html
-    enabled: true
-    encoding: UTF-8
-    prefix: classpath:/templates/
-    suffix: .html
-    # excluded-view-names:
-    # template-resolver-order:
-    # view-names:
-  jpa:
-    database: MYSQL
-    show-sql: true
-    hibernate:
-      ddl-auto: update
-  datasource:
-    platform: mysql
-    url: jdbc:mysql://localhost:3306/springblog?autoReconnect=true&useSSL=false
-    username: root
-    password:
-    driverClassName: com.mysql.jdbc.Driver
----
-spring:
-  profiles:prod
-  thymeleaf:
-    cache: false
-    check-template: true
-    check-template-location: true
-    content-type: text/html
-    enabled: true
-    encoding: UTF-8
-    prefix: classpath:/templates/
-    suffix: .html
-    # excluded-view-names:
-    # template-resolver-order:
-    # view-names:
-  jpa:
-    database: MYSQL
-    show-sql: true
-    hibernate:
-      ddl-auto: update
-  datasource:
-    platform: mysql
-    url: jdbc:mysql://localhost:3306/springblog?autoReconnect=true&useSSL=false
-    username: root
-    password:
-    driverClassName: com.mysql.jdbc.Driver
 logging:
   level:
-    root: WARN
-    com.startwithjava.simpleblog: DEBUG
-    org.springframework.web: INFO
-    org.springframework.security: INFO
+    .: INFO
+    org.springframework: ERROR
+    com.startwithjava.simpleblog: INFO
+
+spring:
+  profiles:
+    active: "dev"
+  main:
+    banner-mode: "console"
+
+server:
+  email: default@mkyong.com
+
+---
+
+spring:
+  profiles: dev
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    platform: mysql
+    url: jdbc:mysql://localhost:3306/springblog?autoReconnect=true&useSSL=false
+    username: root
+    password:
+    driverClassName:  com.mysql.jdbc.Driver
+server:
+  email: dev@mkyong.com
+  cluster:
+    - ip: 127.0.0.1
+      path: /dev1
+    - ip: 127.0.0.2
+      path: /dev2
+    - ip: 127.0.0.3
+      path: /dev3
+
+---
+
+spring:
+  profiles: prod
+
+server:
+  email: prod@mkyong.com
+  cluster:
+    - ip: 192.168.0.1
+      path: /app1
+    - ip: 192.168.0.2
+      path: /app2
+    - ip: 192.168.0.3
+      path: /app3
+
+---
+smtp:
+  username: a@mail.com
+  password: 123
+  host: a.com

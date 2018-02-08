@@ -1,4 +1,5 @@
 package com.startwithjava.simpleblog.entities;
+import lombok.Data;
 import org.hibernate.annotations.MetaValue;
 
 import javax.persistence.*;
@@ -7,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 @Entity
+@Data
 public class Post extends AbstractEntity{
 	private String title;
 	private String content;
@@ -24,40 +26,4 @@ public class Post extends AbstractEntity{
 	@ManyToOne
 	@JoinColumn(name="status")
 	private StatusMaster status;
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
-	}
-	public String getSlug() {
-		return slug;
-	}
-	public void setSlug(String slug) {
-		this.slug = slug;
-	}
-	public User getAuthor() {
-		return author;
-	}
-	public void setAuthor(User author) {
-		this.author = author;
-	}
-	public String getPostType() {
-		return postType;
-	}
-	public void setPostType(String postType) {
-		this.postType = postType;
-	}
-	public StatusMaster getStatus() {
-		return status;
-	}
-	public void setStatus(StatusMaster status) {
-		this.status = status;
-	}
 }

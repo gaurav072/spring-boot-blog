@@ -12,27 +12,20 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class LogHandler {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
-/*
-    @Before("ex()")
-    public void before(JoinPoint joinPoint){
-        //Advice
-        logger.info(" Execution for {}", joinPoint);
-    }
-    @Pointcut("execution(* com.startwithjava.simpleblog..*.*(..))")
-    public void ex(){
-        System.out.println("111111111111111111111111111");
-    }
-*/
-
     @Around("businessMethods0()")
     public Object profile0(ProceedingJoinPoint pjp ) throws Throwable {
         Object output = null;
         try {
             long start = System.currentTimeMillis();
-            double startM =  (double) (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / 1024;
+            double startMemory =  (double) (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / 1024;
             logger.info(" Method execution Start=> ( "+pjp.getTarget().getClass().getName()+"->"+pjp.getSignature().getName());
             output = pjp.proceed();
             logger.info(" Output{}", output);
+            double availableMemory = (double) (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / 1024;
+
+            double memeoryUsed = startMemory-availableMemory;
+            logger.info("Memory Used="+memeoryUsed);
+
             long elapsedTime = System.currentTimeMillis() - start;
             logger.info(" Method execution time: ( "+pjp.getTarget().getClass().getName()+"->"+pjp.getSignature().getName()+" ) ======" + elapsedTime + " milliseconds.");
         } catch (Exception e) {
@@ -42,6 +35,6 @@ public class LogHandler {
     }
     @Pointcut("execution(* com.startwithjava.simpleblog..*.*(..))")
     public void businessMethods0() {
-        System.out.println("=>=>::::::::BusinessProfiller=>::::");
+        logger.info("=>==Spring Boot Blog Log =>::::");
     }
 }

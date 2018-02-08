@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Gaurav
+      changes:
+        - insert:
+            tableName:  role_master
+            columns:
+              - column:
+                  name: role
+                  value: ADMIN
+        - insert:
+            tableName:  role_master
+            columns:
+            - column:
+                name: role
+                value: USER
+

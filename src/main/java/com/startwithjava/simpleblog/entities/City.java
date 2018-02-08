@@ -1,8 +1,10 @@
 package com.startwithjava.simpleblog.entities;
+import lombok.Data;
 import java.io.Serializable;
 import javax.persistence.*;
 
 @Entity
+@Data
 public class City implements Serializable {
     @Id
     @GeneratedValue
@@ -25,18 +27,5 @@ public class City implements Serializable {
     public City(String name, String state) {
         this.name = name;
         this.country = country;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public String getState() {
-        return this.state;
-    }
-
-    @Override
-    public String toString() {
-        return id+"\t"+name+"\t"+country;
     }
 }
