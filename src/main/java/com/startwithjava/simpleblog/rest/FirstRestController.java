@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class FirstRestController {
 	@RequestMapping("/rest")
 	public void test() {
-		System.out.println("Rest invoked");	
+		System.out.println("Rest invoked");
 	}
 	@GetMapping("/rest/chk")
 	public ModelAndView test2() {

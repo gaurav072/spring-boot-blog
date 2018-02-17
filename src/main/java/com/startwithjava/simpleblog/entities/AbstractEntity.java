@@ -14,7 +14,7 @@ import static javax.persistence.TemporalType.TIMESTAMP;
 @MappedSuperclass
 public abstract class AbstractEntity {
 	 @Id @GeneratedValue(strategy=GenerationType.AUTO) 
-	 protected Integer Id;
+	 protected Long Id;
 	 @CreatedDate
      LocalDateTime createdDate;
 	 @LastModifiedDate

@@ -1,13 +1,9 @@
 package com.startwithjava.simpleblog;
-import com.startwithjava.simpleblog.entities.City;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import com.startwithjava.simpleblog.services.mail.*;
-
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 @SpringBootApplication
 public class Blog {
