@@ -1,4 +1,4 @@
-package com.startwithjava.simpleblog.test;
+package com.startwithjava.simpleblog.java8;
 import org.springframework.stereotype.Service;
 @Service
 public class A {

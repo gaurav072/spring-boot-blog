@@ -1,4 +1,4 @@
-package com.startwithjava.simpleblog.test;
+package com.startwithjava.simpleblog.java8;
 
 public class B {
 	public void test() {

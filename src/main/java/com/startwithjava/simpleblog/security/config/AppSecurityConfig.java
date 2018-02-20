@@ -1,5 +1,6 @@
 package com.startwithjava.simpleblog.security.config;
 import com.startwithjava.simpleblog.security.AuthSuccessHandler;
+import com.startwithjava.simpleblog.security.config.entrypoint.ApiAuthenticationEntryPoint;
 import com.startwithjava.simpleblog.security.LoggingAccessDeniedHandler;
 import com.startwithjava.simpleblog.services.AppUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,13 +12,13 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @EnableWebSecurity
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
+    public static final String REALM_NAME = "startwithjava.com";
     @Configuration
     @Order(1)
     public static class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -70,12 +71,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Configuration
     @Order(2)
     public static class ApiTokenSecurityConfig extends WebSecurityConfigurerAdapter{
-
+        @Autowired
+        AppUserDetailsService appUserDetailsService;
         @Override
         protected void configure(HttpSecurity http) throws Exception {
             http
-                    .antMatcher("/api/v2/**");
-            /* other config options go here... */
+                    .csrf()
+                       .disable()
+                    .authorizeRequests()
+                    .antMatchers("/api/**")
+                    .hasRole("ADMIN")
+                    .and()
+                    .httpBasic()
+                        .realmName(REALM_NAME)
+                        .authenticationEntryPoint(new ApiAuthenticationEntryPoint())
+                        .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        }
+        @Override
+        protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+            DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+            daoAuthenticationProvider.setUserDetailsService(appUserDetailsService);
+            auth.authenticationProvider(daoAuthenticationProvider);
         }
 
     }

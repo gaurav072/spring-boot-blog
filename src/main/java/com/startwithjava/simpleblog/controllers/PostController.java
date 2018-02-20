@@ -1,5 +1,4 @@
 package com.startwithjava.simpleblog.controllers;
-
 import com.startwithjava.simpleblog.entities.Post;
 import com.startwithjava.simpleblog.services.post.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @RestController
+@RequestMapping("/post")
 public class PostController {
     @Autowired
     PostService postService;
@@ -33,7 +33,7 @@ public class PostController {
         postService.saveOrUpdate(post);
         return ResponseEntity.ok(HttpStatus.OK);
     }
-    @PostMapping("/{id}")
+    @PostMapping("/api/{id}")
     public ResponseEntity findPost(@PathVariable("id") long id) {
         Post post = postService.findById(id);
         HttpHeaders responseHeaders = new HttpHeaders();
