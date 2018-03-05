@@ -18,7 +18,7 @@ public class SwaggerConfig {
     public Docket productApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("guru.springframework.controllers"))
+                .apis(RequestHandlerSelectors.basePackage("com.startwithjava.simpleblog.controllers"))
                 .paths(regex("/product.*"))
                 .build()
                 .apiInfo(metaData());
