@@ -1,4 +1,4 @@
-package com.startwithjava.simpleblog.aop;
+/*package com.startwithjava.simpleblog.aop;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -38,3 +38,4 @@ public class LogHandler {
         logger.info("=>==Spring Boot Blog Log =>::::");
     }
 }
+*/

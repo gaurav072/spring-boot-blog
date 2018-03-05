@@ -1,13 +1,18 @@
 package com.startwithjava.simpleblog.controllers;
 
+import java.sql.SQLException;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/test")
+
 public class TestController {
-    @RequestMapping("detail")
-    public String detail(){
-        return "detail";
+	@RequestMapping("/test")
+    public String detail() throws SQLException{
+		if(true) {
+			throw new SQLException("Test");
+		}
+        return "index";
     }
 }

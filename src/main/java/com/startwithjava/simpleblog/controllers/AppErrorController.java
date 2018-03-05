@@ -1,7 +1,11 @@
-package com.startwithjava.simpleblog.controllers;
+/*package com.startwithjava.simpleblog.controllers;
 
-import org.springframework.boot.autoconfigure.web.ErrorAttributes;
-import org.springframework.boot.autoconfigure.web.ErrorController;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.boot.web.reactive.error.ErrorAttributes;
+import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -11,30 +15,27 @@ import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.Map;
-
 @Controller
 public class AppErrorController implements ErrorController
 {
-    /**
+    *//**
      * Error Attributes in the Application
-     */
+     *//*
     private ErrorAttributes errorAttributes;
 
     private final static String ERROR_PATH = "/error";
-    /**
+    *//**
      * Controller for the Error Controller
      * @param errorAttributes
-     */
+     *//*
     public AppErrorController(ErrorAttributes errorAttributes) {
         this.errorAttributes = errorAttributes;
     }
-    /**
+    *//**
      * Supports the HTML Error View
      * @param request
      * @return
-     */
+     *//*
     @RequestMapping(value = ERROR_PATH, produces = "text/html")
     public ModelAndView errorHtml(HttpServletRequest request) {
         Map<String,Object> map = getErrorAttributes(request, false);
@@ -42,11 +43,11 @@ public class AppErrorController implements ErrorController
         return new ModelAndView("/error/error", getErrorAttributes(request, false));
     }
 
-    /**
+    *//**
      * Supports other formats like JSON, XML
      * @param request
      * @return
-     */
+     *//*
     @RequestMapping(value = ERROR_PATH)
     @ResponseBody
     public ResponseEntity<Map<String, Object>> error(HttpServletRequest request) {
@@ -55,11 +56,11 @@ public class AppErrorController implements ErrorController
         return new ResponseEntity<Map<String, Object>>(body, status);
     }
 
-    /**
+    *//**
      * Returns the path of the error page.
      *
      * @return the error path
-     */
+     *//*
     @Override
     public String getErrorPath() {
         return ERROR_PATH;
@@ -94,3 +95,4 @@ public class AppErrorController implements ErrorController
         return HttpStatus.INTERNAL_SERVER_ERROR;
     }
 }
+*/

@@ -18,7 +18,7 @@ public class PostServiceImpl implements PostService{
 
     @Override
     public Post findById(Long id) {
-        return postDao.findOne(id);
+        return postDao.getOne(id);
     }
 
     @Override

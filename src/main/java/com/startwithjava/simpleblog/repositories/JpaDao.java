@@ -1,4 +1,4 @@
-package com.startwithjava.simpleblog.repositories;
+/*package com.startwithjava.simpleblog.repositories;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -175,3 +175,4 @@ public abstract class JpaDao<T,ID extends Serializable> implements JpaRepository
         return em().createQuery(cq).getResultList();
     }
 }
+*/

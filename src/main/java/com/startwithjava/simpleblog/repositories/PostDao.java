@@ -1,4 +1,4 @@
-package com.startwithjava.simpleblog.repositories;
+/*package com.startwithjava.simpleblog.repositories;
 
 import com.startwithjava.simpleblog.entities.Post;
 import org.springframework.stereotype.Repository;
@@ -7,3 +7,4 @@ import org.springframework.stereotype.Repository;
 public class PostDao extends JpaDao<Post,Long>{
 
 }
+*/
